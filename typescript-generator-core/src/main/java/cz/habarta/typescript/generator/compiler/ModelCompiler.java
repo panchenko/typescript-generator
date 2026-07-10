@@ -1062,9 +1062,9 @@ public class ModelCompiler {
         if (enumMember.getComments() == null) {
             return "";
         }
-        return " - " + enumMember.getComments().stream()
+        return enumMember.getComments().stream()
             .map(s -> s.startsWith(DeprecationUtils.DEPRECATED) ? s.substring(1) : s)
-            .collect(Collectors.joining(" "));
+            .collect(Collectors.joining(" ", " - ", ""));
     }
 
     private TsModel createAndUseTaggedUnions(final SymbolTable symbolTable, TsModel tsModel) {
