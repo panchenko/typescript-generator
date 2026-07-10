@@ -1048,7 +1048,7 @@ public class ModelCompiler {
                     Stream.of("Values:"),
                     enumModel.getMembers().stream()
                         .map(enumMember -> "- `" + enumMember.getEnumValue() + "`"
-                                + getEnumItemCommentAsString(enumMember))
+                            + getEnumItemCommentAsString(enumMember))
                 )
                 .flatMap(Function.identity())
                 .collect(Collectors.toList())
@@ -1063,8 +1063,8 @@ public class ModelCompiler {
             return "";
         }
         return " - " + enumMember.getComments().stream()
-                .map(s -> s.startsWith(DeprecationUtils.DEPRECATED) ? s.substring(1) : s)
-                .collect(Collectors.joining(" "));
+            .map(s -> s.startsWith(DeprecationUtils.DEPRECATED) ? s.substring(1) : s)
+            .collect(Collectors.joining(" "));
     }
 
     private TsModel createAndUseTaggedUnions(final SymbolTable symbolTable, TsModel tsModel) {
