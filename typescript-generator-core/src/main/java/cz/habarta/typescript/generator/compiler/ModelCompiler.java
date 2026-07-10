@@ -1046,9 +1046,7 @@ public class ModelCompiler {
                     Utils.listFromNullable(enumModel.getComments()).stream(),
                     (hasComments ? Stream.of("") : Stream.<String>empty()),
                     Stream.of("Values:"),
-                    enumModel.getMembers().stream()
-                        .map(enumMember -> "- `" + enumMember.getEnumValue() + "`"
-                            + getEnumItemCommentAsString(enumMember))
+                    enumModel.getMembers().stream().map(enumMember -> "- `" + enumMember.getEnumValue() + "`" + getEnumMemberCommentAsString(enumMember))
                 )
                 .flatMap(Function.identity())
                 .collect(Collectors.toList())
@@ -1058,7 +1056,7 @@ public class ModelCompiler {
         }
     }
 
-    private static String getEnumItemCommentAsString(EnumMemberModel enumMember) {
+    private static String getEnumMemberCommentAsString(EnumMemberModel enumMember) {
         if (enumMember.getComments() == null) {
             return "";
         }
